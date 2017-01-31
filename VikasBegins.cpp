@@ -1,4 +1,5 @@
 #include<iostream>
+#include<math.h>
 using namespace std;
 class node{
 	public:
@@ -18,8 +19,8 @@ class list{
 		char a=' ';
 		int i=0,j=0;
 		head=tail=0;
-		cout<<"Enter some number";
-		while(a!='\n')
+		cout<<"Enter some number(end the number with . and press enter)";
+		do
 		{
 			cin>>a;
 			if(a<='9'&&a>='0')
@@ -42,7 +43,7 @@ class list{
 					j=i=0;
 				}
 			}
-		}
+		}while(a!='.');
 		if(j!=0)
 		{
 			if(head==0)
@@ -51,30 +52,48 @@ class list{
 			}
 			else
 			{
-				tail->next= new node(i);
+				int x= pow(10,4-j);
+				int y= pow(10,j);
+				tail->next= new node( i+ (tail->n % x)*y );
 				tail->next->prev=tail;
-				tail->next=tail;
+				tail=tail->next;
+				
+				node* pull = tail->prev;
+				while(pull->prev!=0)
+				{
+					pull->n = (pull->n/x) +( (pull->prev->n % x) *y);
+					pull=pull->prev;
+				}
+				head->n = head->n/x;
 			}
 		}
+
 	}
 	node *head,*tail;
 };
 void printlist(node* head)
 {
-	node* tmp=head;
-	cout<<endl;
-	while(tmp!=0)
+	if(head!=0)
 	{
-		if(tmp->n >= 1000)
-			cout<< tmp->n;
-		else if(tmp->n>=100)
-			cout<<"0"<<tmp->n;
-		else if(tmp->n>=10)
-			cout<<"00"<<tmp->n;
-		else
-			cout<<"000"<<tmp->n;
+		node* tmp=head;
+		cout<<endl;
+		cout<<tmp->n;
 		tmp=tmp->next;
+		while(tmp!=0)
+		{
+			if(tmp->n >= 1000)
+				cout<< tmp->n;
+			else if(tmp->n>=100)
+				cout<<"0"<<tmp->n;
+			else if(tmp->n>=10)
+				cout<<"00"<<tmp->n;
+			else
+				cout<<"000"<<tmp->n;
+			tmp=tmp->next;
+		}
 	}
+	else
+		cout<<"Empty";
 }
 int main()
 {
