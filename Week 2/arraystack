@@ -35,7 +35,7 @@ void pop(){
 
 else
 {
-	printf("stack is empty\n");
+	printf("Not accepted\n");
 	
 }
 }
@@ -44,7 +44,7 @@ void display (char a[])
 int i;
 if (top == -1)
 {
-printf ("Stack is empty\n");
+printf ("Not accepted\n");
 
 }
 else
