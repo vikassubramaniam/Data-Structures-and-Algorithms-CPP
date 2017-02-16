@@ -1,83 +1,70 @@
 #include<iostream>
 #include<string.h>
 using namespace std;
-int top=-1;
-void push(char);
-void pop();
-void display();
-char x;
 #define n 100
-char a[n];
-
-
-void push(char x){
-	
-  if(top!=(n-1))
-  {
- top++;
- a[top]=x;
-	
-}
+void push(char x,char a[],int* top)
+{
+	if((*top)!=(n-1))
+	{
+		(*top)++;
+		a[*top]=x;
+	}
 	else
 	{
-		printf("stack is full\n");
+		cout<<"Stack is full\n";
+		exit(1);
 	}
 }
-void pop(){
-	if(top!=-1)
+void pop(char a[],int* top)
+{
+	if((*top)!=-1)
 	{
-	
-	
-		a[top]=x;
-		top=top-1;
-	
+		*top=*top-1;
+	}
+	else
+	{
+		cout<<"Not accepted:Received ) before ( \n";
+		exit(0);
+	}
 }
+void check (char a[],int* top)
+{
+	if((*top))
+	{
+		cout<<"\nNot accepted: Excess open braces:\n";
+		for (int i = 0; i <= *top; i++)
+		{
+			cout<<a[i];
+		}
+	}
+	else
+	{
+		cout<<"\nAccepted. All braces balanced\n";
+	}
+}	
 
-else
-{
-	printf("Not accepted\n");
-	
-}
-}
-void display (char a[])
-{
-int i;
-if (top == -1)
-{
-printf ("Not accepted\n");
-
-}
-else
-{
-printf ("\nThe status of the stack is\n");
-for (i = top; i >= 0; i--)
-{
-printf ("%c\n",a[i]);
-}
-
-}
-
-}
 
 int main()
 {
-int i;
-   for(i=0;i<n;i++)
-	  {
-    scanf("%c",&a[i]);
- 		if (a[i] == '(')
-		{
-			push(a[i]);
-		}
-		else if (a[i] == ')')
-		{
-			pop();
-		}
-	else if(a[i]=='.')
+	int top=-1;
+	char a[n],ch;
+	int i;
+	while(1)
 	{
-		break;
+		cin>>ch;
+		if (ch == '(')
+		{
+			push(ch,a,&top);
+		}
+		else if (ch == ')')
+		{
+			pop(a,&top);
+		}
+		else if(ch=='.')
+		{
+			break;
+		}
 	}
-	
-}
-display(a);
+	check(a,&top);
+	return 0;
 }
