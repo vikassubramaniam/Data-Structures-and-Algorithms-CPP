@@ -1,6 +1,6 @@
-#include<stdio.h>
-#include<conio.h>
+#include<iostream>
 #include<string.h>
+using namespace std;
 int top=-1;
 void push(char);
 void pop();
