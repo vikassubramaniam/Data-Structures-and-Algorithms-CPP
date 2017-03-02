@@ -28,7 +28,7 @@ return 1;
 else
 return 0;
 }
-//Lecture Notes 98 Dept. of Information Technology
+
 void push(char op) /* op - operator */
 {
 /* before pushing the operator
