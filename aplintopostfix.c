@@ -31,12 +31,6 @@ return 0;
 
 void push(char op) /* op - operator */
 {
-/* before pushing the operator
-'op' into the stack check priority
-of op with top of opstack if less
-then pop the operator from stack
-then push into postfix string else
-push op onto stack itself */
 if(top == 0)
 {
 opstack[top] = op;
