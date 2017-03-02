@@ -29,7 +29,7 @@ else
 return 0;
 }
 
-void push(char op) /* op - operator */
+void push(char op) 
 {
 if(top == 0)
 {
@@ -46,13 +46,13 @@ postfix[j] = opstack[--top];
 j++;
 }
 }
-opstack[top] = op; /* pushing onto stack */
+opstack[top] = op; 
 top++;
 }
 }
 pop()
 {
-while(opstack[--top] != '(' ) /* pop until '(' comes */
+while(opstack[--top] != '(' ) 
 {
 postfix[j] = opstack[top];
 j++;
@@ -75,7 +75,7 @@ case '*' :
 case '/' :
 case '^' :
 case '%' :
-push(ch); /* check priority and push */
+push(ch); 
 break;
 case ')' :
 pop();
