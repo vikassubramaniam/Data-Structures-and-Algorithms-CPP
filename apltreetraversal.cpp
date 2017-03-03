@@ -29,7 +29,6 @@ class tree
 		if(root==0)
 		{
 			root=new node(n);
-			cout<<"\nI am here";
 			return;
 		}
 		node* curr=root;
