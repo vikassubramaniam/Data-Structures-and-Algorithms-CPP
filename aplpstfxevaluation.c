@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include <math.h>
-#define MAX 20
+#define MAX 100
 int isoperator(char ch)
 {
 if(ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == '^')
