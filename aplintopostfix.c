@@ -1,8 +1,8 @@
 #include<stdio.h>
 # include <string.h>
-char postfix[50];
-char infix[50];
-char opstack[50]; /* operator stack */
+char postfix[100];
+char infix[100];
+char opstack[100]; /* operator stack */
 int i, j, top = 0;
 int lesspriority(char op, char op_at_stack)
 {
